@@ -80,8 +80,13 @@ header li{
   background-size: cover;
   font-family: Lora-Italic;
 }
-.sign_up {
-
+.sign_up.active {
+    font-family: Bitter-Bold;
+    font-size: 24px;
+    background-color: #A03037;
+    border-radius: 0px;
+    border-color: #A03037;
+    margin: 20px 20px;
 }
 .service-process {
   background-color: #DFD3B7;
@@ -109,13 +114,6 @@ header li{
   font-family: Lora-Regular;
   font-size: 20px;
 }
-/*.column{
-  display: inline-block;
-  width: 20%;
-  margin: 20px;
-  text-align: left;
-
-}*/
 .column img{
   width:  200px;
   height: 200px;
@@ -124,4 +122,13 @@ header li{
   background-size:     cover;
   border-radius: 50%;
   display: inline-block;
+}
+footer {
+  background-color: #5F5F5F;
+  border: 1px solid #979797;
+  color: white;
+  font-family: Lora-Italic;
+  font-style: italic;
+  font-size: 20px;
+  text-align: left;
 }
