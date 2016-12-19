@@ -5,6 +5,7 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Fjalla+One|Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="main.css" media="screen" title="no title">
+    <link rel="stylesheet" href="question.css" media="screen" title="no title">
     <title>MuttMatch Questionnare</title>
   </head>
   <body>
@@ -18,6 +19,45 @@
       </div>
     </div>
   </header>
-  
+  <section class='create-account'>
+    <h1>Create Account</h1>
+    </br><p>Let's start off with the basics</p>
+    </br></br><h2>Your Living Situation</h2>
+  </br><p>Some shelters have rescritions based on age and residence type. We want to ensure the
+    matches we show are available for you. We also need to know if you have restrictions on pet
+    types, allergies, and what kind of pet you’re looking for.</p>
+    </br></br><div class="container">
+      <div class="row">
+        <div class="col-xs-8 col-xl-4">
+          <p>Any allergies?</p>
+          <label><input type="checkbox" name="restrictions">Allergic to dogs</label>
+        </div>
+        <div class="col-xs-8 col-xl-4">
+          <label><input type="checkbox" name="restrictions">Allergic to cats</label>
+        </div>
+        <div class="col-xs-12">
+          </br><p>Residence Type?</p>
+          <div class="col-xs-4">
+            <label><input type="radio" name="residence">House</label>
+          </div>
+          <div class="col-xs-4">
+            <label><input type="radio" name="residence">Apartment (no wieght restriction)</label>
+          </div>
+          <div class="col-xs-4">
+            <label><input type="radio" name="residence">Apartment (wieght restriction)</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 col-xl-4">
+          <a href="index.html" class="sign_up btn btn-primary btn-lg active" role="button" aria-pressed="true">Go Back</a>
+        </div>
+        <div class="col-xs-6 col-xl-4">
+          <a href="question_two.html" class="sign_up btn btn-primary btn-lg active" role="button" aria-pressed="true">Continue</a>
+        </div>
+      </div>
+    </div>
+
+  </section>
   </body>
 </html>

@@ -1,0 +1,30 @@
+.create-account {
+  margin-top: 50px;
+}
+.create-account h1 {
+  font-family: Bitter-Bold;
+  font-style: bold;
+  font-size: 85px;
+  color: #A03037;
+}
+
+.create-account h2{
+  font-family: Bitter-Bold;
+  font-style: bold;
+  font-size: 72px;
+  color: #000;
+}
+.create-account p{
+  font-family: Lora-Italic;
+  font-style: italic;;
+  font-size: 20px;
+  color: #000;
+}
+
+.row {
+  margin-top: 10px;
+}
+
+.row div {
+  margin-top: 2px;
+}
