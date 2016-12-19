@@ -72,27 +72,41 @@ div img{
 	padding-top: 10px;
 	height: 70%;
 	width: 70%;
+	padding-bottom: 20px;
+	max-width: 200px;
+	max-height: 200px;
 }
+
 
 .service-centers {
   background-color: #DFD3B7;
   text-align: center;
 }
+.service-centers h1 {
+  color: #A03037;
+  font-family: Bitter-Bold;
+  font-size: 60px;
+	padding-top: 10px;
+	padding-bottom: 20px;
+}
 .service-centers h3 {
   color: #000;
   font-family: Bitter-Bold;
   font-size: 40px;
+	padding-bottom: 20px;
 }
 .service-centers h5 {
   color: #A03037;
   font-family: Bitter-Bold;
   font-size: 20px;
+	padding-bottom: 10px;
 }
 .service-centers p {
   color: #000;
   font-family: Lora-Italic;
   font-size: 17px;
   font-style: italic;
+	padding-bottom: 10px;
 }
 
 .column img{
@@ -103,6 +117,29 @@ div img{
   background-size:     cover;
   display: inline-block;
 }
+
+.testimonials {
+  text-align: center;
+	background-color: white;
+  color: #000;
+  font-family: Lora-Regular;
+  font-size: 20px;
+}
+
+.testimonial iframe{
+	max-width:  50%;
+  max-height: 50%;
+  background-position: 50% 50%;
+  background-repeat:   no-repeat;
+  background-size:     cover;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+
+
+
+
 
 footer {
 	height: 70px;
