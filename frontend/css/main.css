@@ -91,7 +91,7 @@ nav li {
 
 .hero{
   width: 100%;
-	background-image: url("images/homepage/homepage_hero.jpg");
+	background-image: url("../images/homepage/homepage_hero.jpg");
 	padding: 200px 50px;
 
 	background-position: center;
