@@ -46,50 +46,74 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+
 /* custom styles */
 
-.header_button {
+.fixed-nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 50px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 1px 2px grey;
+}
+
+.container {
+	vertical-align: middle;
+}
+
+div img{
+	display: inline-block;
+	position: center;
+	vertical-align: middle;
+	padding-top: 10px;
+	height: 70%;
+	width: 70%;
+}
+
+header ul {
+	list-style: none;
+}
+
+header li {
+	display: inline-block;
+	vertical-align: middle;
   background-color: #2D547A;
   font-family: Bitter-Bold;
   font-size: 24px;
   border-radius: 0px;
 }
-/*header {
-  background-color: white;
-  position: fixed;
-  z-index: 9999;
-  width: 100%;
-  height: 150px;
-  box-shadow: 0 1px 2px grey;
-}*/
-header li{
-  display: inline-block;
-}
-/*#spaniel-hero {
-  background: url('images/homepage_hero.jpg') no-repeat center center fixed;;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}*/
+
 .hero{
-  text-align: center;
+  width: 100%;
+	background-image: url("images/homepage_hero.jpg");
+	padding: 200px 50px;
+	margin-top: 50px;
+	background-position: center;
+	-webkit-background-size: cover;
+	background-size: cover;
 }
-.spaniel-hero {
-  background: url('images/homepage_hero.jpg') no-repeat center center fixed;;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-.hero h3 {
-  font-family: Lora-Italic;
+
+.sign-up-1 {
+	background-color: white;
+	text-align: center;
+	margin-top: 20px;
+	padding: 30px;
+	font-family: Lora-Italic;
   color: #000;
   font-family: Lora-Italic;
   font-size: 20px;
   font-style: italic;
 }
-.sign_up.active {
+
+.sign_up  {
+	background-color: #A03037;
+}
+
+.sign_up button:active {
     font-family: Bitter-Bold;
     font-size: 24px;
     background-color: #A03037;
@@ -117,22 +141,39 @@ header li{
   font-size: 20px;
   font-style: italic;
 }
-.testimonials {
-  text-align: center;
-  color: #000;
-  font-family: Lora-Regular;
-  font-size: 20px;
-}
+
 .column img{
-  width:  200px;
-  height: 200px;
+  width:  50%;
+  height: 50%;
   background-position: 50% 50%;
   background-repeat:   no-repeat;
   background-size:     cover;
   border-radius: 50%;
   display: inline-block;
 }
+
+.testimonials {
+  text-align: center;
+	background-color: white;
+  color: #000;
+  font-family: Lora-Regular;
+  font-size: 20px;
+}
+
+.testimonial img{
+	width:  50%;
+  height: 50%;
+  background-position: 50% 50%;
+  background-repeat:   no-repeat;
+  background-size:     cover;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+
+
 footer {
+	height: 70px;
   background-color: #5F5F5F;
   border: 1px solid #979797;
   color: white;
