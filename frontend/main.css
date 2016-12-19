@@ -50,96 +50,106 @@ table {
 
 /* custom styles */
 
-.fixed-nav-bar {
-  position: fixed;
+nav {
   top: 0;
   left: 0;
   z-index: 9999;
   width: 100%;
   height: 50px;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0 1px 2px grey;
+  background-color: white;
+
 }
 
 .container {
+
 	vertical-align: middle;
 }
 
-div img{
+nav img{
 	display: inline-block;
-	position: center;
 	vertical-align: middle;
-	padding-top: 10px;
-	height: 70%;
-	width: 70%;
+	text-align: justify;
+	height: auto;
+	width: 140px;
+	padding-top: 15px;
 }
 
-header ul {
+nav ul {
+	display: inline-block;
 	list-style: none;
 }
 
-header li {
+nav li {
 	display: inline-block;
-	vertical-align: middle;
-  background-color: #2D547A;
-  font-family: Bitter-Bold;
-  font-size: 24px;
-  border-radius: 0px;
+	border-radius: 0px;
+  font-family: 'Bitter', serif;
+  font-size: 16px;
+
+	margin: 15px 15px;
+
 }
 
 .hero{
   width: 100%;
-	background-image: url("images/homepage_hero.jpg");
+	background-image: url("images/homepage/homepage_hero.jpg");
 	padding: 200px 50px;
-	margin-top: 50px;
+
 	background-position: center;
 	-webkit-background-size: cover;
 	background-size: cover;
 }
 
-.sign-up-1 {
-	background-color: white;
+.cta {
 	text-align: center;
+	background-color: white;
 	margin-top: 20px;
 	padding: 30px;
-	font-family: Lora-Italic;
   color: #000;
-  font-family: Lora-Italic;
+}
+
+.cta h3 {
+
+	font-family: 'Lora', serif;
   font-size: 20px;
   font-style: italic;
 }
 
 .sign_up  {
 	background-color: #A03037;
+	margin: 20px 0;
+	text-decoration: none;
+	color: white;
+	padding: 10px;
+	border: none;
+	font-family: 'Bitter', serif;
 }
 
-.sign_up button:active {
-    font-family: Bitter-Bold;
-    font-size: 24px;
-    background-color: #A03037;
-    border-radius: 0px;
-    border-color: #A03037;
-    margin: 20px 20px;
-}
+
 .service-process {
   background-color: #DFD3B7;
   text-align: center;
 }
 .service-process h3 {
   color: #000;
-  font-family: Bitter-Bold;
-  font-size: 72px;
+  font-family: 'Bitter', serif;
+  font-size: 48px;
+	padding: 20px 0;
 }
 .service-process h5 {
   color: #A03037;
-  font-family: Bitter-Bold;
-  font-size: 36px;
+  font-family: 'Bitter', serif;
+  font-size: 30px;
+	padding: 10px 0;
 }
 .service-process p {
   color: #000;
-  font-family: Lora-Italic;
-  font-size: 20px;
+  font-family: 'Lora', serif;
+  font-size: 16px;
   font-style: italic;
+}
+
+.service-process a {
+	margin: 20px 0;
 }
 
 .column img{
@@ -156,29 +166,42 @@ header li {
   text-align: center;
 	background-color: white;
   color: #000;
-  font-family: Lora-Regular;
-  font-size: 20px;
+  font-family: 'Lora', serif;
+  font-size: 16px;
+}
+
+.testimonial {
+	padding: 20px 0;
 }
 
 .testimonial img{
 	width:  50%;
   height: 50%;
+	padding-bottom: 15px;
   background-position: 50% 50%;
   background-repeat:   no-repeat;
-  background-size:     cover;
+
   border-radius: 50%;
   display: inline-block;
 }
 
+.testimonial p {
+	padding: 0 20px;
+}
 
 
 footer {
-	height: 70px;
+	height: 50px;
   background-color: #5F5F5F;
   border: 1px solid #979797;
   color: white;
-  font-family: Lora-Italic;
+  font-family: 'Lora', serif;
   font-style: italic;
   font-size: 20px;
-  text-align: left;
+  text-align: center;
+}
+
+footer h5 {
+	padding-top: 15px;
+	font-size: 12px;
 }
