@@ -10,7 +10,7 @@ var schema = new mongoose.Schema({
   size: { type: String, required: true}
 });
 
-var model = mongoose.model('Playlist', schema);
+var model = mongoose.model('Dog', schema);
 
 // Make this available to our other files
 module.exports = model;

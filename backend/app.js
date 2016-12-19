@@ -15,7 +15,7 @@ var app = express();
 
 //CHANGE NAME OF PLAYLIST
 var mongoose = require('mongoose');
-mongoose.connect(process.env.DB_CON_PLAYLISTS);
+mongoose.connect(process.env.MUTT_MATCH_DB);
 // view engine setup
 //Secures our site. reference from prev projects. The Auth0 secret is the same as ours
 var jwtCheck = jwt({
