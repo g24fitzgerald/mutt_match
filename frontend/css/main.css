@@ -81,12 +81,18 @@ nav ul {
 
 nav li {
 	display: inline-block;
-	border-radius: 0px;
   font-family: 'Bitter', serif;
   font-size: 16px;
-
 	margin: 15px 15px;
+}
 
+nav li button {
+	background-color: #2D547A;
+	text-decoration: none;
+	padding: 5px;
+	color: white;
+	border: none;
+	font-family: 'Bitter', serif;
 }
 
 .hero{
