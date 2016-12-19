@@ -22,39 +22,11 @@ $(document).ready(function() {
         // Handle error
         return;
       }
-      console.log('authResult.idToken', authResult.idToken);
       localStorage.setItem('id_token', authResult.idToken);
       // Display user information
       show_profile_info(profile);
-      showMatches();
     });
   });
-
-
-
-// Need to format function, figure out url
-  var showMatches = function() {
-  var idToken = localStorage.getItem('id_token');
-
-  var request = $.ajax({
-    url: 'http://localhost:3000/api/playlists',
-    method: 'GET',
-    headers: {
-      'Authorization': 'Bearer ' + idToken
-    }
-  });
-
-  request.done(function(results){
-    console.log(results);
-
-    for (var i=0, x=results.length; i<x; i++){
-      $('main').append('<h3>' + results[i].title + '</h3>')
-    }
-  });
-};
-// end showMatches
-
-
 
   //retrieve the profile:
   var retrieve_profile = function() {
