@@ -4,7 +4,7 @@
 .create-account h1 {
   font-family: Bitter-Bold;
   font-style: bold;
-  font-size: 85px;
+  font-size: 72px;
   color: #A03037;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .row {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .row div {
