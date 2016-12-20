@@ -24,6 +24,7 @@ $(document).ready(function() {
         // Handle error
         return;
       }
+      console.log('authResult.idToken', authResult.idToken);
       localStorage.setItem('id_token', authResult.idToken);
       // Display user information
       show_profile_info(profile);
