@@ -1,8 +1,8 @@
 $(document).ready(function() {
-
   var lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN, {
     auth: {
       redirectUrl: AUTH0_CALLBACK_URL,
+      responseType: 'token',
       params: { scope: 'openid email' } //Details: https://auth0.com/docs/scopes
 
     }
@@ -19,16 +19,19 @@ $(document).ready(function() {
   })
 
   lock.on("authenticated", function(authResult) {
+    alert('called');
     lock.getProfile(authResult.idToken, function(error, profile) {
       if (error) {
         // Handle error
         console.error(error);
         return;
       }
+      console.log(profile);
       console.log('authResult.idToken', authResult.idToken);
       localStorage.setItem('id_token', authResult.idToken);
 
       retrieve_profile();
+      console.log(retrieve_profile());
       // Display user information
       // show_profile_info(profile);
       //display dogs
@@ -42,7 +45,7 @@ var showDogs = function(){
     console.log('new token: ', idToken);
 
     var request = $.ajax({
-      url: 'http://localhost:3000/api/playlists', //we wouldn't want to hardcode this
+      url: 'http://localhost:3000/api/dogs', //we wouldn't want to hardcode this
       method: 'GET',
       date: {
         name: 'Dog name'
@@ -63,7 +66,9 @@ var showDogs = function(){
   //retrieve the profile:
   var retrieve_profile = function() {
     var id_token = localStorage.getItem('id_token');
+    console.log('id_token is: ', id_token);
     if (id_token) {
+      console.log('we have it');
       lock.getProfile(id_token, function (err, profile) {
         if (err) {
           return alert('There was an error getting the profile: ' + err.message);
