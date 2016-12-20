@@ -27,6 +27,8 @@ $(document).ready(function() {
         return;
       }
       console.log('profile: ', profile);
+
+      //checkPrefs(profile)
       console.log('authResult.idToken', authResult.idToken);
       localStorage.setItem('id_token', authResult.idToken);
 
@@ -45,7 +47,7 @@ var showDogs = function(){
     console.log('new token: ', idToken);
 
     var request = $.ajax({
-      url: 'http://localhost:3000/api/dogs', //we wouldn't want to hardcode this
+      url: 'http://localhost:3000/api/dog', //we wouldn't want to hardcode this
       method: 'GET',
       date: {
         name: 'Dog name'
