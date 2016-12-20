@@ -44,6 +44,12 @@ $(document).ready(function() {
       checkPreference(profile);
     });
   });
+
+function loadQuiz(){
+  console.log('loadQuiz');
+  $('#result').load('/questions.html #main');
+};
+
 //Show dogs
 var checkPreference = function( profile ){
     //access database with get request to backend (ajax) using jwt to veryify good connection
@@ -71,21 +77,23 @@ var checkPreference = function( profile ){
         //if we have a profile
       }
       else {
+        loadQuiz();
         //if we don't have a profile redirect to questionnaire
-        alert("We don't have your profile! Take our quick quiz to set your preferences!");
-        var questionnaire = [
-          "<section class='create-account'><h1>Create Account</h1> </br><p>Let's start off with the basics</p></br></br><h2>Your Living Situation</h2></br><p>Some shelters have restrictions based on age and residence type. We want to ensure thematches we show are available for you.<br>We also need to know if you have restrictions on pet types, allergies, and what kind of pet you’re looking for.</p>",
-          "  <br>We also need to know if you have restrictions on pet types, allergies, and what kind of pet you’re looking for.</p></br></br>",
-          "<div class='container'><div class='boxes'><div class='col-xs-8 col-xl-4'><p2>Any allergies?</p><br><label><input type='checkbox' name='restrictions'>Allergic to dogs</label></div><div class='col-xs-8 col-xl-4'><label><input type='checkbox' name='restrictions'>Allergic to cats</label></div></div>",
-          "<div class='boxes'><div class='col-xs-8 col-xl-4'><p2>Who lives with you?</p><br><label><input type='checkbox' name='restrictions'>I have children</label></div><div class='col-xs-8 col-xl-4'><label><input type='checkbox' name='restrictions'>I have a dog</label></div><div class='col-xs-8 col-xl-4'><label><input type='checkbox' name='restrictions'>I have a cat</label></div></div>",
-          "<div class='boxes'><div class='col-xs-12'></br><p2>Residence Type?</p><br><div class='col-xs-4'><label><input type='radio' name='residence'>House</label></div><div class='col-xs-4'><label><input type='radio' name='residence'>Apartment (no weight restriction)</label></div><div class='col-xs-4'><label><input type='radio' name='residence'>Apartment (weight restriction)</label></div></div></div></section>",
 
-          "<section class='create-account'><h1>Your Activity</h1></br><p>Tell us how you like to spend your time (select all that apply)</p></br><p>I like to...</p></br>",
-          "<div class='container'><div class='boxes'><div class='col-xs-8 col-xl-4'><label><input type='checkbox' name='activity'>Sleep all the time</label></div><div class='col-xs-8 col-xl-4'><label><input type='checkbox' name='activity'>Snuggle on the couch</label></div><div class='col-xs-8 col-xl-4'><label><input type='checkbox' name='activity'>Play outside 24/7</label></div><div class='col-xs-8 col-xl-4'><label><input type='checkbox' name='activity'>Go running/jogging/swimming</label></div><div class='col-xs-8 col-xl-4'><label><input type='checkbox' name='activity'>I have a cat</label></div></div></div>",
-          "<div class='pet'><div class='col-xs-8 col-xl-4'><p3>I am looking for a (select all that apply)</p></br><label><input type='checkbox' name='restrictions'>Dog</label></div><div class='col-xs-8 col-xl-4'><label><input type='checkbox' name='restrictions'>Cat</label></div></div></section>",
-          "<section class='buttons'><div class='container'><div class='row'><div class='col-xs-6 col-xl-4'><a href='question_one.html' class='sign_up btn btn-primary btn-lg active' role='button' aria-pressed='true'>Back</a></div><div class='col-xs-6 col-xl-4'><a href='question_two.html' class='sign_up btn btn-primary btn-lg active' role='button' aria-pressed='true'>See Results</a></div></div></div></section>"
-        ]
-        $('#container').append(questionnaire);
+        // alert("We don't have your profile! Take our quick quiz to set your preferences!");
+        // var questionnaire = [
+        //   "<section class='create-account'><h1>Create Account</h1> </br><p>Let's start off with the basics</p></br></br><h2>Your Living Situation</h2></br><p>Some shelters have restrictions based on age and residence type. We want to ensure thematches we show are available for you.<br>We also need to know if you have restrictions on pet types, allergies, and what kind of pet you’re looking for.</p>",
+        //   "  <br>We also need to know if you have restrictions on pet types, allergies, and what kind of pet you’re looking for.</p></br></br>",
+        //   "<div class='container'><div class='boxes'><div class='col-xs-8 col-xl-4'><p2>Any allergies?</p><br><label><input type='checkbox' name='restrictions'>Allergic to dogs</label></div><div class='col-xs-8 col-xl-4'><label><input type='checkbox' name='restrictions'>Allergic to cats</label></div></div>",
+        //   "<div class='boxes'><div class='col-xs-8 col-xl-4'><p2>Who lives with you?</p><br><label><input type='checkbox' name='restrictions'>I have children</label></div><div class='col-xs-8 col-xl-4'><label><input type='checkbox' name='restrictions'>I have a dog</label></div><div class='col-xs-8 col-xl-4'><label><input type='checkbox' name='restrictions'>I have a cat</label></div></div>",
+        //   "<div class='boxes'><div class='col-xs-12'></br><p2>Residence Type?</p><br><div class='col-xs-4'><label><input type='radio' name='residence'>House</label></div><div class='col-xs-4'><label><input type='radio' name='residence'>Apartment (no weight restriction)</label></div><div class='col-xs-4'><label><input type='radio' name='residence'>Apartment (weight restriction)</label></div></div></div></section>",
+        //
+        //   "<section class='create-account'><h1>Your Activity</h1></br><p>Tell us how you like to spend your time (select all that apply)</p></br><p>I like to...</p></br>",
+        //   "<div class='container'><div class='boxes'><div class='col-xs-8 col-xl-4'><label><input type='checkbox' name='activity'>Sleep all the time</label></div><div class='col-xs-8 col-xl-4'><label><input type='checkbox' name='activity'>Snuggle on the couch</label></div><div class='col-xs-8 col-xl-4'><label><input type='checkbox' name='activity'>Play outside 24/7</label></div><div class='col-xs-8 col-xl-4'><label><input type='checkbox' name='activity'>Go running/jogging/swimming</label></div><div class='col-xs-8 col-xl-4'><label><input type='checkbox' name='activity'>I have a cat</label></div></div></div>",
+        //   "<div class='pet'><div class='col-xs-8 col-xl-4'><p3>I am looking for a (select all that apply)</p></br><label><input type='checkbox' name='restrictions'>Dog</label></div><div class='col-xs-8 col-xl-4'><label><input type='checkbox' name='restrictions'>Cat</label></div></div></section>",
+        //   "<section class='buttons'><div class='container'><div class='row'><div class='col-xs-6 col-xl-4'><a href='question_one.html' class='sign_up btn btn-primary btn-lg active' role='button' aria-pressed='true'>Back</a></div><div class='col-xs-6 col-xl-4'><a href='question_two.html' class='sign_up btn btn-primary btn-lg active' role='button' aria-pressed='true'>See Results</a></div></div></div></section>"
+        // ]
+        // $('#container').append(questionnaire);
 
       }
       // for (var i = 0, x = results.length; i<x; i++){
