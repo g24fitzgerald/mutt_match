@@ -34,21 +34,21 @@ $(document).ready(function() {
       console.log(retrieve_profile());
       // Display user information
       // show_profile_info(profile);
-      //display dogs
-      showDogs();
+      //check p
+      checkPreference();
     });
   });
 //Show dogs
-var showDogs = function(){
+var checkPreference = function(){
     //access database with get request to backend (ajax) using jwt to veryify good connection
     var idToken = localStorage.getItem('id_token');
     console.log('new token: ', idToken);
 
     var request = $.ajax({
-      url: 'http://localhost:3000/api/dogs', //we wouldn't want to hardcode this
-      method: 'GET',
-      date: {
-        name: 'Dog name'
+      url: 'http://localhost:3000/checkprefs', //we wouldn't want to hardcode this
+      method: 'POST',
+      data: {
+        userId: req.body.profile.user_id,
       },
       //need to send authorization header
       headers: {
@@ -59,7 +59,7 @@ var showDogs = function(){
     request.done(function(results){
       console.log(results);
       for (var i = 0, x = results.length; i<x; i++){
-        $('.main_ul').append('<li>' + results[i].name + '</li>');
+        $('.main_ul').append('<li>' + results[i].size + '</li>');
       }
     });
   };
