@@ -20,7 +20,11 @@ $(document).ready(function() {
 
   lock.on("authenticated", function(authResult) {
     alert('called');
+    //set token in localStorage after authenticated,
+    localStorage.setItem('id_token', authResult.idToken);
+
     lock.getProfile(authResult.idToken, function(error, profile) {
+
       if (error) {
         // Handle error
         console.error(error);
@@ -30,41 +34,69 @@ $(document).ready(function() {
 
       //checkPrefs(profile)
       console.log('authResult.idToken', authResult.idToken);
-      localStorage.setItem('id_token', authResult.idToken);
+
 
       retrieve_profile();
       console.log(retrieve_profile());
       // Display user information
       // show_profile_info(profile);
-      //display dogs
-      showDogs();
+      //check p
+      checkPreference(profile);
     });
   });
 //Show dogs
-var showDogs = function(){
+var checkPreference = function( profile ){
     //access database with get request to backend (ajax) using jwt to veryify good connection
     var idToken = localStorage.getItem('id_token');
     console.log('new token: ', idToken);
 
     var request = $.ajax({
+<<<<<<< HEAD
       url: 'http://localhost:3000/api/dog', //we wouldn't want to hardcode this
       method: 'GET',
       date: {
         name: 'Dog name'
       },
+=======
+      url: 'http://localhost:3000/checkprefs', //we wouldn't want to hardcode this
+      method: 'POST',
+>>>>>>> 84f4ef1a2c7e2065ad1bba54562692cd2905f6d0
       //need to send authorization header
       headers: {
         'Authorization': 'Bearer ' + idToken
+      },
+      //equivalent to req.body
+      data: {
+        userid: profile.user_id
       }
     });
 
     request.done(function(results){
-      console.log(results);
-      for (var i = 0, x = results.length; i<x; i++){
-        $('.main_ul').append('<li>' + results[i].name + '</li>');
+      console.log('results: ',results);
+      if (results) {
+        //if we have a profile
       }
+      else {
+        //if we don't have a profile redirect to questionnaire
+        alert("We don't have your profile! Take our quick quiz to set your preferences!");
+        var questionnaire = [
+          "<section class='create-account'><h1>Create Account</h1> </br><p>Let's start off with the basics</p></br></br><h2>Your Living Situation</h2></br><p>Some shelters have restrictions based on age and residence type. We want to ensure thematches we show are available for you.<br>We also need to know if you have restrictions on pet types, allergies, and what kind of pet you’re looking for.</p>",
+          "  <br>We also need to know if you have restrictions on pet types, allergies, and what kind of pet you’re looking for.</p></br></br>",
+          "<div class='container'><div class='boxes'><div class='col-xs-8 col-xl-4'><p2>Any allergies?</p><br><label><input type='checkbox' name='restrictions'>Allergic to dogs</label></div><div class='col-xs-8 col-xl-4'><label><input type='checkbox' name='restrictions'>Allergic to cats</label></div></div>",
+          "<div class='boxes'><div class='col-xs-8 col-xl-4'><p2>Who lives with you?</p><br><label><input type='checkbox' name='restrictions'>I have children</label></div><div class='col-xs-8 col-xl-4'><label><input type='checkbox' name='restrictions'>I have a dog</label></div><div class='col-xs-8 col-xl-4'><label><input type='checkbox' name='restrictions'>I have a cat</label></div></div>",
+          "<div class='boxes'><div class='col-xs-12'></br><p2>Residence Type?</p><br><div class='col-xs-4'><label><input type='radio' name='residence'>House</label></div><div class='col-xs-4'><label><input type='radio' name='residence'>Apartment (no weight restriction)</label></div><div class='col-xs-4'><label><input type='radio' name='residence'>Apartment (weight restriction)</label></div></div></div></section>",
+
+        ]
+        $('#container').append(questionnaire);
+
+      }
+      // for (var i = 0, x = results.length; i<x; i++){
+      //   $('.main_ul').append('<li>' + results[i].size + '</li>');
+      // }
     });
   };
+
+
   //retrieve the profile:
   var retrieve_profile = function() {
     var id_token = localStorage.getItem('id_token');
