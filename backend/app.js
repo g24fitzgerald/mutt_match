@@ -1,29 +1,16 @@
-require('dotenv').config();
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-//installed jwt express module
-var jwt = require('express-jwt');
 
 var index = require('./routes/index');
-var api = require('./routes/api');
-var cors = require('cors');
-var app = express();
-//CHANGE NAME OF PLAYLIST
-var mongoose = require('mongoose');
-mongoose.connect(process.env.MUTT_MATCH_DB);
-// view engine setup
-//Secures our site. reference from prev projects. The Auth0 secret is the same as ours
-var jwtCheck = jwt({
-  secret: process.env.AUTH0_CLIENT_SECRET,
-  audience: process.env.AUTH0_CLIENT_ID
-});
-//this enables cross-origin resource sharing
-app.use(cors());
+var users = require('./routes/users');
 
+var app = express();
+
+// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -36,7 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/api', jwtCheck, api);
+app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
