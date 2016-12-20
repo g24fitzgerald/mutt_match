@@ -26,7 +26,7 @@ $(document).ready(function() {
         console.error(error);
         return;
       }
-      console.log(profile);
+      console.log('profile: ', profile);
       console.log('authResult.idToken', authResult.idToken);
       localStorage.setItem('id_token', authResult.idToken);
 
