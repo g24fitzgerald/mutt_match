@@ -8,7 +8,7 @@ router.post('/checkprefs', function(req, res, next) {
     if (err) console.log(err);
     console.log('running..');
     if (result.length) {
-      console.log(result);
+      // console.log(result);
       res.json(result);
     }
     else {
