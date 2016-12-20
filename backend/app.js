@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 var jwt = require('express-jwt');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var api = require('./routes/api');
 
 var app = express();
 
