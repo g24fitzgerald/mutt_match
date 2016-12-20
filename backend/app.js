@@ -12,7 +12,7 @@ var index = require('./routes/index');
 var api = require('./routes/api');
 
 var app = express();
-
+var cors = require('cors');
 //CHANGE NAME OF PLAYLIST
 var mongoose = require('mongoose');
 mongoose.connect(process.env.MUTT_MATCH_DB);
@@ -22,6 +22,8 @@ var jwtCheck = jwt({
   secret: process.env.AUTH0_CLIENT_SECRET,
   audience: process.env.AUTH0_CLIENT_ID
 });
+//this enables cross-origin resource sharing
+app.use(cors());
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
