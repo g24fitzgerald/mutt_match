@@ -47,9 +47,9 @@ $(document).ready(function() {
 
   var show_profile_info = function(profile) {
     console.log('In the profile!');
-     $('.nickname').text(profile.nickname);
+    //  $('.nickname').text(profile.nickname);
      $('.btn-login').hide();
-     $('.avatar').attr('src', profile.picture).show();
+    //  $('.avatar').attr('src', profile.picture).show();
      $('.btn-logout').show();
   };
 
