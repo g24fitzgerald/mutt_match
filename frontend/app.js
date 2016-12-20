@@ -28,7 +28,7 @@ $(document).ready(function() {
       }
       console.log('profile: ', profile);
       console.log('authResult.idToken', authResult.idToken);
-      localStorage.setItem('id_token', authResult.idToken);
+      // localStorage.setItem('id_token', authResult.idToken);
 
       retrieve_profile();
       console.log(retrieve_profile());
@@ -47,9 +47,6 @@ var checkPreference = function(){
     var request = $.ajax({
       url: 'http://localhost:3000/checkprefs', //we wouldn't want to hardcode this
       method: 'POST',
-      data: {
-        userId: req.body.profile.user_id,
-      },
       //need to send authorization header
       headers: {
         'Authorization': 'Bearer ' + idToken
