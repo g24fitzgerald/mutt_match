@@ -10,9 +10,8 @@ var jwt = require('express-jwt');
 
 var index = require('./routes/index');
 var api = require('./routes/api');
-
-var app = express();
 var cors = require('cors');
+var app = express();
 //CHANGE NAME OF PLAYLIST
 var mongoose = require('mongoose');
 mongoose.connect(process.env.MUTT_MATCH_DB);
