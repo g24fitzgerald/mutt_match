@@ -51,16 +51,10 @@ var checkPreference = function( profile ){
     console.log('new token: ', idToken);
 
     var request = $.ajax({
-<<<<<<< HEAD
-      url: 'http://localhost:3000/api/dog', //we wouldn't want to hardcode this
-      method: 'GET',
-      date: {
-        name: 'Dog name'
-      },
-=======
+
       url: 'http://localhost:3000/checkprefs', //we wouldn't want to hardcode this
       method: 'POST',
->>>>>>> 84f4ef1a2c7e2065ad1bba54562692cd2905f6d0
+
       //need to send authorization header
       headers: {
         'Authorization': 'Bearer ' + idToken
