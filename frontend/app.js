@@ -20,7 +20,11 @@ $(document).ready(function() {
 
   lock.on("authenticated", function(authResult) {
     alert('called');
+    //set token in localStorage after authenticated,
+    localStorage.setItem('id_token', authResult.idToken);
+
     lock.getProfile(authResult.idToken, function(error, profile) {
+
       if (error) {
         // Handle error
         console.error(error);
@@ -28,18 +32,18 @@ $(document).ready(function() {
       }
       console.log('profile: ', profile);
       console.log('authResult.idToken', authResult.idToken);
-      // localStorage.setItem('id_token', authResult.idToken);
+
 
       retrieve_profile();
       console.log(retrieve_profile());
       // Display user information
       // show_profile_info(profile);
       //check p
-      checkPreference();
+      checkPreference(profile);
     });
   });
 //Show dogs
-var checkPreference = function(){
+var checkPreference = function( profile ){
     //access database with get request to backend (ajax) using jwt to veryify good connection
     var idToken = localStorage.getItem('id_token');
     console.log('new token: ', idToken);
@@ -50,14 +54,18 @@ var checkPreference = function(){
       //need to send authorization header
       headers: {
         'Authorization': 'Bearer ' + idToken
+      },
+      //equivalent to req.body
+      data: {
+        userid: profile.user_id
       }
     });
 
     request.done(function(results){
-      console.log(results);
-      for (var i = 0, x = results.length; i<x; i++){
-        $('.main_ul').append('<li>' + results[i].size + '</li>');
-      }
+      console.log('results: ',results);
+      // for (var i = 0, x = results.length; i<x; i++){
+      //   $('.main_ul').append('<li>' + results[i].size + '</li>');
+      // }
     });
   };
   //retrieve the profile:

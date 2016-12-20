@@ -1,18 +1,20 @@
 var express = require('express');
 var router = express.Router();
-var UserPreference = require('../models/user_preference');
+var Preference = require('../models/user_preference');
 var Dog = require('../models/dog');
 
-router.get('/profile', function(req, res, next) {
-
-  Preference.find({ userId: req.user.aud }, '', function(err, result) {
+router.post('/checkprefs', function(req, res, next) {
+  Preference.find({ userId: req.body.userid }, '', function(err, result) {
     if (err) console.log(err);
-    else if (result) {
-      console.log(userId);
+    console.log('running..');
+    if (result.length) {
       console.log(result);
       res.json(result);
     }
-    else {res.send('false');}
+    else {
+      console.log('else hit');
+      res.send(false);
+    }
   });
 });
 module.exports = router;
