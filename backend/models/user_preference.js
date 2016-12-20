@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 var schema = new mongoose.Schema({
+  userId: { type: String, required: true },
   active: { type: Boolean, required: true},
   lazy: { type: Boolean, required: true},
   hypoalergenic: { type: Boolean, required: true},
