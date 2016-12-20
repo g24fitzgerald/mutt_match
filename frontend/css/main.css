@@ -70,7 +70,7 @@ nav img{
 	vertical-align: middle;
 	text-align: justify;
 	height: auto;
-	width: 140px;
+	width: 150px;
 	padding-top: 15px;
 }
 
@@ -81,8 +81,6 @@ nav ul {
 
 nav li {
 	display: inline-block;
-  font-family: 'Bitter', serif;
-  font-size: 14px;
 	margin: 15px 15px;
 }
 
@@ -93,6 +91,7 @@ nav li button {
 	color: white;
 	border: none;
 	font-family: 'Bitter', serif;
+	font-size: 14px;
 }
 
 .hero{
@@ -138,7 +137,8 @@ nav li button {
 .service-process h3 {
   color: #000;
   font-family: 'Bitter', serif;
-  font-size: 48px;
+  font-size: 42px;
+	font-weight: bold;
 	padding: 20px 0;
 }
 .service-process h5 {
@@ -157,6 +157,19 @@ nav li button {
 .service-process a {
 	margin: 20px 0;
 }
+
+@media only screen and (max-width: 768px) {
+    .service-process h3
+		{font-size: 34px;
+		}
+}
+
+@media only screen and (max-width: 768px) {
+    .service-process img
+		{padding-top: 10px;
+		}
+}
+
 
 .column img{
   width:  50%;
@@ -183,7 +196,7 @@ nav li button {
 .testimonial img{
 	width:  50%;
   height: 50%;
-	padding-bottom: 15px;
+	padding: 15px 0;
   background-position: 50% 50%;
   background-repeat:   no-repeat;
 
