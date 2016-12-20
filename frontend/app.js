@@ -22,15 +22,44 @@ $(document).ready(function() {
     lock.getProfile(authResult.idToken, function(error, profile) {
       if (error) {
         // Handle error
+        console.error(error);
         return;
       }
       console.log('authResult.idToken', authResult.idToken);
       localStorage.setItem('id_token', authResult.idToken);
+
+      retrieve_profile();
       // Display user information
-      show_profile_info(profile);
+      // show_profile_info(profile);
+      //display dogs
+      showDogs();
     });
   });
+//Show dogs
+var showDogs = function(){
+    //access database with get request to backend (ajax) using jwt to veryify good connection
+    var idToken = localStorage.getItem('id_token');
+    console.log('new token: ', idToken);
 
+    var request = $.ajax({
+      url: 'http://localhost:3000/api/playlists', //we wouldn't want to hardcode this
+      method: 'GET',
+      date: {
+        name: 'Dog name'
+      },
+      //need to send authorization header
+      headers: {
+        'Authorization': 'Bearer ' + idToken
+      }
+    });
+
+    request.done(function(results){
+      console.log(results);
+      for (var i = 0, x = results.length; i<x; i++){
+        $('.main_ul').append('<li>' + results[i].name + '</li>');
+      }
+    });
+  };
   //retrieve the profile:
   var retrieve_profile = function() {
     var id_token = localStorage.getItem('id_token');

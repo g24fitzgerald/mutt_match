@@ -18,3 +18,4 @@ router.get('/dogs', function(req, res, next) {
     res.json(result);
   });
 });
+module.exports = router;
