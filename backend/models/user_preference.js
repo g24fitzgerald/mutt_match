@@ -1,14 +1,14 @@
 var mongoose = require('mongoose');
 
 var schema = new mongoose.Schema({
-  userId: { type: String, required: true },
-  active: { type: Boolean, required: true},
-  lazy: { type: Boolean, required: true},
+  userId: String,
+  active: Boolean,
+  lazy: Boolean,
   hypoalergenic: { type: Boolean, required: true},
-  good_with_kids: Boolean,
-  good_with_dogs: Boolean,
-  good_with_cats: Boolean,
-  home_size: { type: String, required: true}
+  has_kids: Boolean,
+  has_dogs: Boolean,
+  has_cats: Boolean,
+  home_size: String
 });
 
 var model = mongoose.model('Preference', schema);
