@@ -31,6 +31,8 @@ $(document).ready(function() {
         return;
       }
       console.log('profile: ', profile);
+
+      //checkPrefs(profile)
       console.log('authResult.idToken', authResult.idToken);
 
 
@@ -49,8 +51,10 @@ var checkPreference = function( profile ){
     console.log('new token: ', idToken);
 
     var request = $.ajax({
+
       url: 'http://localhost:3000/checkprefs', //we wouldn't want to hardcode this
       method: 'POST',
+
       //need to send authorization header
       headers: {
         'Authorization': 'Bearer ' + idToken
