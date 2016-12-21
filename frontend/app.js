@@ -109,6 +109,7 @@ $(document).ready(function() {
       want_cat: false
     }
     console.log('Profile is : ', Profile);
+    var idToken = localStorage.getItem('id_token');
     var $profile_value = $('.boxes').find('input');
     //set values of Profile keys
     $profile_value.each(function(i,box){
@@ -161,7 +162,7 @@ $(document).ready(function() {
     var request = $.ajax({
       url: 'http://localhost:3000/api', //Do we need to make a new route?
       method: 'POST',
-      //need to send authorization header
+      // need to send authorization header
       headers: {
         'Authorization': 'Bearer ' + idToken
       },
@@ -172,8 +173,10 @@ $(document).ready(function() {
     request.done(function(results){
       console.log('results: ',results);
       if (results) {
+        console.log('results: ', results);
       }
       else {
+        console.log('results did not exist')
       }
     });
   };
