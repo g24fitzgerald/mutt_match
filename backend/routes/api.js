@@ -19,4 +19,12 @@ router.get('/profile', function(req, res, next) {
     res.json(result);
   });
 });
+// create (post) a single profile
+router.post('/userpreference', function(req, res){
+  newProfile = req.body.Profile;
+  newProfile.save(function(err, preference){
+    if (err) console.error(err);
+    res.json(preference);
+  });
+});
 module.exports = router;

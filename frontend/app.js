@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  alert('loading correctly');
   var lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN, {
     auth: {
       redirectUrl: AUTH0_CALLBACK_URL,
@@ -17,7 +18,17 @@ $(document).ready(function() {
     e.preventDefault();
     logout();
   })
-
+  //after completing quiz, generate profile
+  $('body').on('click', '.generate_profile', function(e) {
+    console.log('submit clicked');
+    generateProfile();
+    e.preventDefault();
+  });
+  // $('.generate_profile').on('click', function(e) {
+  //   console.log('submit clicked');
+  //   generateProfile();
+  //   e.preventDefault();
+  // });
   lock.on("authenticated", function(authResult) {
     alert('called');
     //set token in localStorage after authenticated,
@@ -85,7 +96,7 @@ $(document).ready(function() {
   //generate profile
   var generateProfile = function(){
     var Profile = {
-      userId: //set userId here
+      // userId: //set userId here don't set here for sercurity
       active: false,
       lazy: false,
       dog_allergy:false ,
@@ -97,9 +108,11 @@ $(document).ready(function() {
       want_dog: false,
       want_cat: false
     }
+    console.log('Profile is : ', Profile);
     var $profile_value = $('.boxes').find('input');
     //set values of Profile keys
     $profile_value.each(function(i,box){
+      box = $(box);
       switch(box.val()){
         case 'Allergic to dogs':
           Profile.dog_allergy = box.is(':checked');
@@ -141,18 +154,27 @@ $(document).ready(function() {
           else {Profile.home_size = "small"}
         break;
       }
-      return Profile;
     });
+
+    console.log('Final profile: ', Profile);
     //post new profile preferences to DB
     var request = $.ajax({
-      url: 'http://localhost:3000/checkprefs', //Do we need to make a new route?
+      url: 'http://localhost:3000/api', //Do we need to make a new route?
       method: 'POST',
       //need to send authorization header
       headers: {
         'Authorization': 'Bearer ' + idToken
       },
-      //equivalent to req.body
-      data: Profile; //????
+      data: {
+        Profile: Profile //access with req.body.profile
+      }
+    });
+    request.done(function(results){
+      console.log('results: ',results);
+      if (results) {
+      }
+      else {
+      }
     });
   };
 
@@ -184,6 +206,5 @@ $(document).ready(function() {
     localStorage.removeItem('id_token');
     window.location.href = "/";
   };
-
   retrieve_profile();
 });
