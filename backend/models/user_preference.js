@@ -4,11 +4,14 @@ var schema = new mongoose.Schema({
   userId: String,
   active: Boolean,
   lazy: Boolean,
-  hypoalergenic: { type: Boolean, required: true},
+  dog_allergy:Boolean ,
+  cat_allergy: Boolean,
   has_kids: Boolean,
   has_dogs: Boolean,
   has_cats: Boolean,
-  home_size: String
+  home_size: String,
+  want_dog: Boolean,
+  want_cat: Boolean
 });
 
 var model = mongoose.model('Preference', schema);
