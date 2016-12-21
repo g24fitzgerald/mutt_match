@@ -85,10 +85,11 @@ $(document).ready(function() {
   //generate profile
   var generateProfile = function(){
     var Profile = {
+      userId: //set userId here
       active: false,
       lazy: false,
-      hypoalergenic_dogs:false ,
-      hypoalergenic_cats: false,
+      dog_allergy:false ,
+      cat_allergy: false,
       has_kids: false,
       has_dogs: false,
       has_cats: false,
@@ -96,15 +97,15 @@ $(document).ready(function() {
       want_dog: false,
       want_cat: false
     }
-    var $profile_value = $('.boxes'.find('input');
+    var $profile_value = $('.boxes').find('input');
     //set values of Profile keys
     $profile_value.each(function(i,box){
       switch(box.val()){
         case 'Allergic to dogs':
-          Profile.hypoalergenic_dogs = box.is(':checked');
+          Profile.dog_allergy = box.is(':checked');
         break;
         case 'Allergic to cats':
-          Profile.hypoalergenic_cats = box.is(':checked');
+          Profile.cat_allergy = box.is(':checked');
         break;
         case 'I have children':
           Profile.has_kids = box.is(':checked');
@@ -133,11 +134,27 @@ $(document).ready(function() {
         case 'Cat':
           Profile.want_cat = box.is(':checked');
         break;
+        case 'House':
+          if (box.is(':checked')){
+            Profile.home_size = "large";
+          }
+          else {Profile.home_size = "small"}
+        break;
       }
       return Profile;
     });
-    return Profile;
-  }
+    //post new profile preferences to DB
+    var request = $.ajax({
+      url: 'http://localhost:3000/checkprefs', //Do we need to make a new route?
+      method: 'POST',
+      //need to send authorization header
+      headers: {
+        'Authorization': 'Bearer ' + idToken
+      },
+      //equivalent to req.body
+      data: Profile; //????
+    });
+  };
 
   //retrieve the profile:
   var retrieve_profile = function() {
