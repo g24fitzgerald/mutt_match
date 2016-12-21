@@ -97,7 +97,7 @@ $(document).ready(function() {
     //access idToken because call requires jwt token
     var idToken = localStorage.getItem('id_token');
     var $profile_value = $('.boxes').find('input');
-    //set values of Profile keys
+    //set values of Profile keys corresponding to survey answers
     $profile_value.each(function(i,box){
       box = $(box);
       switch(box.val()){
@@ -153,16 +153,18 @@ $(document).ready(function() {
       },
       data: Profile
     });
-    request.done(function(results){
+    request.done(function(results){ //
       console.log('results: ',results);
       if (results) {
         console.log('results: ', results);
+        //showdogs(results) function
       }
       else {
         console.log('results did not exist')
       }
     });
   };
+  //show dogs function
 
   //retrieve the profile:
   var retrieve_profile = function() {
