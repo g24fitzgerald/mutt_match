@@ -73,6 +73,15 @@ nav img {
 }
 
 
+.create {
+  background-color: #DFD3B7;
+  text-align: center;
+  color: #A03037 ;
+  font-family: 'Bitter-Bold', serif;
+  font-size: 60px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
 
 .create-account {
   margin-top: 50px;
@@ -86,9 +95,9 @@ nav img {
 	padding-bottom: 5px;
 }
 
-.create-account h2 {
+.create-account h4 {
   font-family: 'Bitter', serif;
-  font-size: 65px;
+  font-size: 40px;
   color: #000;
   padding-left: 110px;
 }
