@@ -199,7 +199,8 @@ nav li button {
   font-family: 'Bitter', serif;
   font-size: 34px;
 	font-weight: bold;
-	padding: 20px 0;
+	padding: 10px 0;
+	margin-top: 10px;
 }
 
 @media only screen and (min-width: 769px) {
@@ -221,10 +222,9 @@ nav li button {
 .testimonial img{
 	width:  50%;
   height: 50%;
-	padding: 15px 0;
+	padding-bottom: 15px;
   background-position: 50% 50%;
   background-repeat:   no-repeat;
-
   border-radius: 50%;
   display: inline-block;
 }
