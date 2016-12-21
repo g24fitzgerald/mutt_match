@@ -73,24 +73,28 @@ nav img {
 }
 
 
-.service-centers {
+.causes {
   background-color: #DFD3B7;
-  text-align: center;
 }
 
-.service-centers h1 {
+.causes h1 {
   color: #A03037;
   font-family: 'Bitter-Bold', serif;
-  font-size: 80px;
+  font-size: 60px;
 	padding-top: 10px;
 	padding-bottom: 20px;
+	margin-left: 20px;
 }
 
-.service-centers h3 {
-	font-family: 'Lora', serif;
+.causes h3 {
+	font-family: 'Lora-Italic', serif;
 	font-size: 20px;
-	font-style: italic;
 	padding-bottom: 30px;
+	margin: 0 20px;
+}
+
+.service-centers {
+	margin-top: 20px;
 }
 
 .service-centers h5 {
@@ -110,8 +114,8 @@ nav img {
 }
 
 .column img {
-	width:  200px;
-  height: 250px;
+	width:  80%;
+  height: 80%;
   background-position: 50% 50%;
   background-repeat:   no-repeat;
   background-size:     cover;
@@ -125,6 +129,7 @@ nav img {
   font-family: 'Lora', serif;
   font-size: 20px;
 	padding-top: 10px;
+	margin-bottom: 10px;
 }
 
 .maps iframe {
@@ -135,6 +140,28 @@ nav img {
   background-size:     cover;
   display: inline-block;
 }
+
+.donate {
+  background-color: #DFD3B7;
+	margin-bottom: 10px;
+}
+
+.donate h1 {
+  color: #A03037;
+  font-family: 'Bitter-Bold', serif;
+  font-size: 60px;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	margin-left: 20px;
+}
+
+.donate h3 {
+	font-family: 'Lora-Italic', serif;
+	font-size: 20px;
+	padding-bottom: 30px;
+	margin: 0 20px;
+}
+
 
 .payment {
 	color: #000;
