@@ -82,7 +82,62 @@ $(document).ready(function() {
       // }
     });
   };
-
+  //generate profile
+  var generateProfile = function(){
+    var Profile = {
+      active: false,
+      lazy: false,
+      hypoalergenic_dogs:false ,
+      hypoalergenic_cats: false,
+      has_kids: false,
+      has_dogs: false,
+      has_cats: false,
+      home_size: false,
+      want_dog: false,
+      want_cat: false
+    }
+    var $profile_value = $('.boxes'.find('input');
+    //set values of Profile keys
+    $profile_value.each(function(i,box){
+      switch(box.val()){
+        case 'Allergic to dogs':
+          Profile.hypoalergenic_dogs = box.is(':checked');
+        break;
+        case 'Allergic to cats':
+          Profile.hypoalergenic_cats = box.is(':checked');
+        break;
+        case 'I have children':
+          Profile.has_kids = box.is(':checked');
+        break;
+        case 'I have a dog':
+          Profile.has_dogs = box.is(':checked');
+        break;
+        case 'I have a cat':
+          Profile.has_cats = box.is(':checked');
+        break;
+        case 'Sleep all the time':
+          Profile.lazy = box.is(':checked');
+        break;
+        case 'Snuggle on the couch':
+          Profile.lazy = box.is(':checked');
+        break;
+        case 'Play outside 24/7':
+          Profile.active = box.is(':checked');
+        break;
+        case 'Go running/jogging/swimming':
+          Profile.active = box.is(':checked');
+        break;
+        case 'Dog':
+          Profile.want_dog = box.is(':checked');
+        break;
+        case 'Cat':
+          Profile.want_cat = box.is(':checked');
+        break;
+      }
+      return Profile;
+    });
+    return Profile;
+  }
 
   //retrieve the profile:
   var retrieve_profile = function() {
