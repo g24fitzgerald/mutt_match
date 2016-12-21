@@ -73,22 +73,34 @@ nav img {
 }
 
 
+.create {
+  background-color: #DFD3B7;
+}
+
+.create h1 {
+  color: #A03037;
+  font-family: 'Bitter-Bold', serif;
+  font-size: 60px;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	margin-left: 20px;
+}
+
+.create h3 {
+	font-family: 'Lora-Italic', serif;
+	font-size: 20px;
+	padding-bottom: 30px;
+	margin: 0 20px;
+  font-style: italic;
+}
 
 .create-account {
   margin-top: 50px;
 }
 
-.create-account h1 {
-  color: #A03037;
-  font-family: 'Bitter-Bold', serif;
-  font-size: 80px;
-	padding-left: 110px;
-	padding-bottom: 5px;
-}
-
-.create-account h2 {
+.create-account h4 {
   font-family: 'Bitter', serif;
-  font-size: 65px;
+  font-size: 40px;
   color: #000;
   padding-left: 110px;
 }
@@ -101,14 +113,34 @@ nav img {
   padding-right: 110px;
 }
 
+.create-account p3 {
+  font-family: 'Lora', serif;
+  font-size: 20px;
+  color: #000;
+  padding-right: 110px;
+}
+
 .boxes {
   margin-left: 26px;
   padding-bottom: 120px;
 }
 
+.boxes p2 {
+  font-size: 20px;
+}
+
+input[type=checkbox] {
+  margin: 20px 0 0;
+}
+
 .pet {
   margin-left: 96px;
   padding-bottom: 120px;
+}
+
+.pet p2 {
+  margin-top: 40px;
+
 }
 
 .sign_up {
