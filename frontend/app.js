@@ -5,7 +5,6 @@ $(document).ready(function() {
       redirectUrl: AUTH0_CALLBACK_URL,
       responseType: 'token',
       params: { scope: 'openid email' } //Details: https://auth0.com/docs/scopes
-
     }
   });
 
@@ -18,17 +17,12 @@ $(document).ready(function() {
     e.preventDefault();
     logout();
   })
-  //after completing quiz, generate profile
+  //after completing quiz, generate profile need to tie to body becuase SPA loads .generate_profile button late
   $('body').on('click', '.generate_profile', function(e) {
-    console.log('submit clicked');
     generateProfile();
     e.preventDefault();
   });
-  // $('.generate_profile').on('click', function(e) {
-  //   console.log('submit clicked');
-  //   generateProfile();
-  //   e.preventDefault();
-  // });
+
   lock.on("authenticated", function(authResult) {
     alert('called');
     //set token in localStorage after authenticated,
@@ -37,21 +31,16 @@ $(document).ready(function() {
     lock.getProfile(authResult.idToken, function(error, profile) {
 
       if (error) {
-        // Handle error
         console.error(error);
         return;
       }
       console.log('profile: ', profile);
-
       //checkPrefs(profile)
       console.log('authResult.idToken', authResult.idToken);
 
-
       retrieve_profile();
       console.log(retrieve_profile());
-      // Display user information
-      // show_profile_info(profile);
-      //check p
+
       checkPreference(profile);
     });
   });
@@ -60,7 +49,6 @@ $(document).ready(function() {
     console.log('loadQuiz');
     $('#result').load('/questions.html #main');
   };
-
 
   var checkPreference = function( profile ){
     //access database with get request to backend (ajax) using jwt to veryify good connection
@@ -79,7 +67,7 @@ $(document).ready(function() {
         userid: profile.user_id
       }
     });
-
+//THIS ISNT WORKING RIGHT
     request.done(function(results){
       console.log('results: ',results);
       if (results) {
@@ -95,8 +83,8 @@ $(document).ready(function() {
   };
   //generate profile
   var generateProfile = function(){
+    //generate Profile object with all values set to false
     var Profile = {
-      // userId: //set userId here don't set here for sercurity
       active: false,
       lazy: false,
       dog_allergy:false ,
@@ -108,7 +96,7 @@ $(document).ready(function() {
       want_dog: false,
       want_cat: false
     }
-    console.log('Profile is : ', Profile);
+    //access idToken because call requires jwt token
     var idToken = localStorage.getItem('id_token');
     var $profile_value = $('.boxes').find('input');
     //set values of Profile keys
@@ -158,8 +146,6 @@ $(document).ready(function() {
     });
 
     console.log('Final profile: ', Profile);
-    //post new profile preferences to DB
-    console.log('post token: ', idToken);
     var request = $.ajax({
       url: 'http://localhost:3000/api/userpreference', //Do we need to make a new route?
       method: 'POST',
@@ -188,7 +174,7 @@ $(document).ready(function() {
       console.log('we have it');
       lock.getProfile(id_token, function (err, profile) {
         if (err) {
-          return alert('There was an error getting the profile: ' + err.message);
+          console.error('There was an error getting the profile: ' + err.message);
         }
         // Display user information
         show_profile_info(profile);

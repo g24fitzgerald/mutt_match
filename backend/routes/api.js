@@ -7,14 +7,9 @@ var UserMatch = require('../models/user_dog_match');
 
 //get all playlists for a user
 router.get('/profile', function(req, res, next) {
-  //auth0's way of handling user
-  // var userId = req.user.aud;
-  // Find ALL documents that match the criteria passed, only return the "name" and "favorite" fields
-  // console.log(userId);
+
   Preference.find({ userId: req.user.aud }, '', function(err, result) {
     if (err) console.log(err);
-    // console.log(userId);
-    // console.log(result);
 
     res.json(result);
   });
@@ -26,7 +21,7 @@ router.post('/userpreference', function(req, res){
   // req.body.Profile.userId = req.user.aud;
   console.log('profile: ',req.body);
 
-  req.body.userid = req.user.aud;
+  req.body.userId = req.user.aud;
 
   var newProfile = new Preference(req.body);
 
