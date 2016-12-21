@@ -159,16 +159,15 @@ $(document).ready(function() {
 
     console.log('Final profile: ', Profile);
     //post new profile preferences to DB
+    console.log('post token: ', idToken);
     var request = $.ajax({
-      url: 'http://localhost:3000/api', //Do we need to make a new route?
+      url: 'http://localhost:3000/api/userpreference', //Do we need to make a new route?
       method: 'POST',
       // need to send authorization header
       headers: {
         'Authorization': 'Bearer ' + idToken
       },
-      data: {
-        Profile: Profile //access with req.body.profile
-      }
+      data: Profile
     });
     request.done(function(results){
       console.log('results: ',results);
