@@ -20,7 +20,7 @@ router.post('/userpreference', function(req, res){
 
   // req.body.Profile.userId = req.user.aud;
   console.log('profile: ',req.body);
-
+  //set user preference key userId value to tokenId
   req.body.userId = req.user.aud;
 
   var newProfile = new Preference(req.body);

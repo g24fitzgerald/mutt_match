@@ -1,5 +1,4 @@
 $(document).ready(function() {
-  alert('loading correctly');
   var lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN, {
     auth: {
       redirectUrl: AUTH0_CALLBACK_URL,
@@ -24,7 +23,6 @@ $(document).ready(function() {
   });
 
   lock.on("authenticated", function(authResult) {
-    alert('called');
     //set token in localStorage after authenticated,
     localStorage.setItem('id_token', authResult.idToken);
 
