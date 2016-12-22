@@ -171,14 +171,14 @@ $(document).ready(function() {
     //use profile here to find matching dogs
 
     var request = $.ajax({
-      $('#matches-list').empty(); //ensure contents of html are cleared
+      // $('#matches-list').empty(); //ensure contents of html are cleared
       url: 'http://localhost:3000/api/findmatch',
       method: 'POST',
       // need to send authorization header for security
       headers: {
-        'Authorization': 'Bearer ' + idToken
+        'Authorization': 'Bearer ' + id_token
       },
-      data: //we want the dog object
+      data: profile
     });
     request.done(function(results){ //
       console.log('results: ',results);
