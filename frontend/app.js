@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
   var lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN, {
     auth: {
       redirectUrl: AUTH0_CALLBACK_URL,
@@ -22,6 +23,7 @@ $(document).ready(function() {
     e.preventDefault();
   });
 
+
   lock.on("authenticated", function(authResult) {
     //set token in localStorage after authenticated,
     localStorage.setItem('id_token', authResult.idToken);
@@ -43,9 +45,14 @@ $(document).ready(function() {
     });
   });
 
-  function loadQuiz(){
-    console.log('loadQuiz');
+  var loadQuiz = function(){
+    console.log('load Quiz');
     $('#result').load('/questions.html #main');
+  };
+
+  var loadProfile = function(){
+    console.log('load Profile');
+    $('#result').load('/matches.html');
   };
 
   var checkPreference = function( profile ){
@@ -69,17 +76,15 @@ $(document).ready(function() {
     request.done(function(results){
       console.log('results: ',results);
       if (results) {
-        //if we have a profile
+        //if we have a profile, load matches.html
+        loadProfile();
       }
       else {
         loadQuiz();
       }
-      // for (var i = 0, x = results.length; i<x; i++){
-      //   $('.main_ul').append('<li>' + results[i].size + '</li>');
-      // }
     });
   };
-  //generate profile
+
   var generateProfile = function(){
     //generate Profile object with all values set to false
     var Profile = {
@@ -167,6 +172,7 @@ $(document).ready(function() {
   };
   //show dogs function
   var showDogs = function(profile){
+    loadProfile();
     var idToken = localStorage.getItem('id_token');
     //use profile here to find matching dogs
 
@@ -183,16 +189,23 @@ $(document).ready(function() {
     request.done(function(results){ //
       if (results) {
         console.log('match results: ', results);
-        //refer to reddit to format matches
+        //loop through matches to grab image name and breed values
         for (var i = 0; i < results.length; i++){
+          var image = results[i].image;
           var name = results[i].name;
           var breed = results[i].breed;
-
+          //insert to display
           var elements = [
           '<li>',
             '<div class="row">',
+              '<div class="col-md-3">',
+                '<a href=#>',
+                  '<img src=',image,'>',
+                '</a>',
+              '</div>',
               '<div class="col-md-1">',
                 '<h5>', name, '</h5>',
+                '<p>', breed, '</p>',
               '</div>',
             '</div>',
           '</li>'
@@ -206,7 +219,7 @@ $(document).ready(function() {
     });
 
   };
-  //retrieve the profile:
+
   var retrieve_profile = function() {
     var id_token = localStorage.getItem('id_token');
     console.log('id_token is: ', id_token);
