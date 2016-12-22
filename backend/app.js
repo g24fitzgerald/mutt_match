@@ -10,6 +10,7 @@ var jwt = require('express-jwt');
 var index = require('./routes/index');
 var api = require('./routes/api');
 var checkprefs = require('./routes/checkprefs');
+var findmatch = require('./routes/findmatch');
 var cors = require('cors');
 var app = express();
 //CHANGE NAME OF PLAYLIST
@@ -35,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/api', jwtCheck, api);
 app.use('/', jwtCheck, checkprefs);
+app.use('/', jwtCheck, findmatch);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

@@ -87,6 +87,12 @@ nav img {
 	margin-left: 120px;
 }
 
+@media only screen and (max-width: 768px) {
+    .header h1
+		{font-size: 34px;
+		}
+}
+
 .header h3 {
 	font-family: 'Lora-Italic', serif;
 	font-size: 20px;
@@ -95,7 +101,7 @@ nav img {
 	margin: 0 120px;
 }
 
-.service-process img{
+.service-process img {
   width:  100%;
   height: 100%;
   margin-left: 50%;
@@ -124,13 +130,12 @@ nav img {
 }
 
 .cta h3 {
-
 	font-family: 'Lora', serif;
   font-size: 20px;
   font-style: italic;
 }
 
-.sign_up  {
+.sign_up {
 	background-color: #A03037;
 	margin: 30px 0;
 	text-decoration: none;

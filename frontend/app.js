@@ -1,11 +1,9 @@
 $(document).ready(function() {
-  alert('loading correctly');
   var lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN, {
     auth: {
       redirectUrl: AUTH0_CALLBACK_URL,
       responseType: 'token',
       params: { scope: 'openid email' } //Details: https://auth0.com/docs/scopes
-
     }
   });
 
@@ -18,40 +16,29 @@ $(document).ready(function() {
     e.preventDefault();
     logout();
   })
-  //after completing quiz, generate profile
+  //after completing quiz, generate profile need to tie to body becuase SPA loads .generate_profile button late
   $('body').on('click', '.generate_profile', function(e) {
-    console.log('submit clicked');
     generateProfile();
     e.preventDefault();
   });
-  // $('.generate_profile').on('click', function(e) {
-  //   console.log('submit clicked');
-  //   generateProfile();
-  //   e.preventDefault();
-  // });
+
   lock.on("authenticated", function(authResult) {
-    alert('called');
     //set token in localStorage after authenticated,
     localStorage.setItem('id_token', authResult.idToken);
 
     lock.getProfile(authResult.idToken, function(error, profile) {
 
       if (error) {
-        // Handle error
         console.error(error);
         return;
       }
       console.log('profile: ', profile);
-
       //checkPrefs(profile)
       console.log('authResult.idToken', authResult.idToken);
 
-
       retrieve_profile();
       console.log(retrieve_profile());
-      // Display user information
-      // show_profile_info(profile);
-      //check p
+
       checkPreference(profile);
     });
   });
@@ -60,7 +47,6 @@ $(document).ready(function() {
     console.log('loadQuiz');
     $('#result').load('/questions.html #main');
   };
-
 
   var checkPreference = function( profile ){
     //access database with get request to backend (ajax) using jwt to veryify good connection
@@ -79,7 +65,7 @@ $(document).ready(function() {
         userid: profile.user_id
       }
     });
-
+//THIS ISNT WORKING RIGHT
     request.done(function(results){
       console.log('results: ',results);
       if (results) {
@@ -95,8 +81,8 @@ $(document).ready(function() {
   };
   //generate profile
   var generateProfile = function(){
+    //generate Profile object with all values set to false
     var Profile = {
-      // userId: //set userId here don't set here for sercurity
       active: false,
       lazy: false,
       dog_allergy:false ,
@@ -108,10 +94,10 @@ $(document).ready(function() {
       want_dog: false,
       want_cat: false
     }
-    console.log('Profile is : ', Profile);
+    //access idToken because call requires jwt token
     var idToken = localStorage.getItem('id_token');
     var $profile_value = $('.boxes').find('input');
-    //set values of Profile keys
+    //set values of Profile keys corresponding to survey answers
     $profile_value.each(function(i,box){
       box = $(box);
       switch(box.val()){
@@ -158,29 +144,68 @@ $(document).ready(function() {
     });
 
     console.log('Final profile: ', Profile);
-    //post new profile preferences to DB
     var request = $.ajax({
-      url: 'http://localhost:3000/api', //Do we need to make a new route?
+      url: 'http://localhost:3000/api/userpreference',
       method: 'POST',
       // need to send authorization header
       headers: {
         'Authorization': 'Bearer ' + idToken
       },
-      data: {
-        Profile: Profile //access with req.body.profile
-      }
+      data: Profile
     });
-    request.done(function(results){
+    request.done(function(results){ //
       console.log('results: ',results);
       if (results) {
         console.log('results: ', results);
+        //showdogs(results) function
+        showDogs(results);
       }
       else {
         console.log('results did not exist')
       }
     });
   };
+  //show dogs function
+  var showDogs = function(profile){
+    var idToken = localStorage.getItem('id_token');
+    //use profile here to find matching dogs
 
+    var request = $.ajax({
+      // $('#matches-list').empty(); //ensure contents of html are cleared
+      url: 'http://localhost:3000/api/findmatch',
+      method: 'POST',
+      // need to send authorization header for security
+      headers: {
+        'Authorization': 'Bearer ' + idToken
+      },
+      data: profile
+    });
+    request.done(function(results){ //
+      if (results) {
+        console.log('match results: ', results);
+        //refer to reddit to format matches
+        for (var i = 0; i < results.length; i++){
+          var name = results[i].name;
+          var breed = results[i].breed;
+
+          var elements = [
+          '<li>',
+            '<div class="row">',
+              '<div class="col-md-1">',
+                '<h5>', name, '</h5>',
+              '</div>',
+            '</div>',
+          '</li>'
+        ].join('');
+        $('#matches-list').append(elements);
+        }
+      }
+      else {
+        console.log('results did not exist')
+      }
+    });
+
+  };
   //retrieve the profile:
   var retrieve_profile = function() {
     var id_token = localStorage.getItem('id_token');
@@ -189,7 +214,7 @@ $(document).ready(function() {
       console.log('we have it');
       lock.getProfile(id_token, function (err, profile) {
         if (err) {
-          return alert('There was an error getting the profile: ' + err.message);
+          console.error('There was an error getting the profile: ' + err.message);
         }
         // Display user information
         show_profile_info(profile);
