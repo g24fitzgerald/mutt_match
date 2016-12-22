@@ -1,4 +1,8 @@
 $(document).ready(function() {
+  var baseUrl;
+  if (window.location.hostname === "localhost") {
+     baseUrl = "http://localhost:3000/api";
+  } else { baseUrl =  "https://radiant-waters-50602.herokuapp.com"}
 
   var lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN, {
     auth: {
@@ -23,7 +27,6 @@ $(document).ready(function() {
     e.preventDefault();
   });
 
-
   lock.on("authenticated", function(authResult) {
     //set token in localStorage after authenticated,
     localStorage.setItem('id_token', authResult.idToken);
@@ -41,7 +44,8 @@ $(document).ready(function() {
       retrieve_profile();
       console.log(retrieve_profile());
 
-      checkPreference(profile);
+      //
+      loadQuiz();
     });
   });
 
@@ -55,35 +59,36 @@ $(document).ready(function() {
     $('#result').load('/matches.html');
   };
 
-  var checkPreference = function( profile ){
-    //access database with get request to backend (ajax) using jwt to veryify good connection
-    var idToken = localStorage.getItem('id_token');
-    console.log('new token: ', idToken);
-
-    var request = $.ajax({
-      url: 'http://localhost:3000/checkprefs', //we shouldn't hardcode this
-      method: 'POST',
-      //need to send authorization header
-      headers: {
-        'Authorization': 'Bearer ' + idToken
-      },
-      //equivalent to req.body
-      data: {
-        userid: profile.user_id
-      }
-    });
-//THIS ISNT WORKING RIGHT
-    request.done(function(results){
-      console.log('results: ',results);
-      if (results) {
-        //if we have a profile, load matches.html
-        loadProfile();
-      }
-      else {
-        loadQuiz();
-      }
-    });
-  };
+// BROKEN This is supposed to check if a user exists in mongoDB already, and populate their preferences.
+//   var checkPreference = function( profile ){
+//     //access database with get request to backend (ajax) using jwt to veryify good connection
+//     var idToken = localStorage.getItem('id_token');
+//     console.log('new token: ', idToken);
+//
+//     var request = $.ajax({
+//       url: baseUrl + '/checkprefs', //we need to
+//       method: 'POST',
+//       //need to send authorization header
+//       headers: {
+//         'Authorization': 'Bearer ' + idToken
+//       },
+//       //equivalent to req.body
+//       data: {
+//         userid: profile.user_id
+//       }
+//     });
+// //THIS ISNT WORKING RIGHT
+//     request.done(function(results){
+//       console.log('results: ',results);
+//       if (results) {
+//         //if we have a profile, load matches.html
+//         loadProfile();
+//       }
+//       else {
+//         loadQuiz();
+//       }
+//     });
+//   };
 
   var generateProfile = function(){
     //generate Profile object with all values set to false
@@ -150,7 +155,7 @@ $(document).ready(function() {
 
     console.log('Final profile: ', Profile);
     var request = $.ajax({
-      url: 'http://localhost:3000/api/userpreference',
+      url: baseUrl + '/userpreference',
       method: 'POST',
       // need to send authorization header
       headers: {
@@ -178,7 +183,7 @@ $(document).ready(function() {
 
     var request = $.ajax({
       // $('#matches-list').empty(); //ensure contents of html are cleared
-      url: 'http://localhost:3000/api/findmatch',
+      url: baseUrl + '/findmatch',
       method: 'POST',
       // need to send authorization header for security
       headers: {
@@ -237,9 +242,7 @@ $(document).ready(function() {
 
   var show_profile_info = function(profile) {
     console.log('In the profile!');
-    //  $('.nickname').text(profile.nickname);
      $('.btn-login').hide();
-    //  $('.avatar').attr('src', profile.picture).show();
      $('.btn-logout').show();
   };
 
