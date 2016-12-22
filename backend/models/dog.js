@@ -5,7 +5,7 @@ var schema = new mongoose.Schema({
   breed: String,
   active: Boolean,
   lazy: Boolean,
-  hypoalergenic: Boolean,
+  hypoallergenic: Boolean,
   good_with_kids: Boolean,
   good_with_dogs: Boolean,
   good_with_cats: Boolean,

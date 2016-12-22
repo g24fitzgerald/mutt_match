@@ -171,18 +171,21 @@ $(document).ready(function() {
     //use profile here to find matching dogs
 
     var request = $.ajax({
+      $('#matches-list').empty(); //ensure contents of html are cleared
       url: 'http://localhost:3000/api/findmatch',
       method: 'POST',
-      // need to send authorization header
+      // need to send authorization header for security
       headers: {
         'Authorization': 'Bearer ' + idToken
       },
-      data: Profile
+      data: //we want the dog object
     });
     request.done(function(results){ //
       console.log('results: ',results);
       if (results) {
         console.log('results: ', results);
+        //refer to reddit to format matches
+
       }
       else {
         console.log('results did not exist')
