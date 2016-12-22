@@ -59,6 +59,7 @@ $(document).ready(function() {
     $('#result').load('/matches.html');
   };
 
+
 // BROKEN This is supposed to check if a user exists in mongoDB already, and populate their preferences.
 //   var checkPreference = function( profile ){
 //     //access database with get request to backend (ajax) using jwt to veryify good connection
@@ -182,7 +183,6 @@ $(document).ready(function() {
     //use profile here to find matching dogs
 
     var request = $.ajax({
-      // $('#matches-list').empty(); //ensure contents of html are cleared
       url: baseUrl + '/findmatch',
       method: 'POST',
       // need to send authorization header for security
@@ -203,14 +203,16 @@ $(document).ready(function() {
           var elements = [
           '<li>',
             '<div class="row">',
-              '<div class="col-md-3">',
+              '<div class="col-xs-4 match-image">',
                 '<a href=#>',
                   '<img src=',image,'>',
                 '</a>',
               '</div>',
-              '<div class="col-md-1">',
+              '<div class="col-xs-4 match-info">',
                 '<h5>', name, '</h5>',
-                '<p>', breed, '</p>',
+              '</div>',
+              '<div class="col-xs-4 match-info">',
+                '<h5>', breed, '</h5>',
               '</div>',
             '</div>',
           '</li>'
