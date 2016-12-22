@@ -51,7 +51,7 @@ $(document).ready(function() {
 
   var loadProfile = function(){
     console.log('load Profile');
-    $('#result').load('/matches.html .matches');
+    $('#result').load('/matches.html');
   };
 
   var checkPreference = function( profile ){
