@@ -22,6 +22,7 @@ $(document).ready(function() {
     e.preventDefault();
   });
 
+
   lock.on("authenticated", function(authResult) {
     //set token in localStorage after authenticated,
     localStorage.setItem('id_token', authResult.idToken);
@@ -184,6 +185,7 @@ $(document).ready(function() {
       data: profile
     });
     request.done(function(results){ //
+      loadProfile();
       if (results) {
         console.log('match results: ', results);
         //loop through matches to grab image name and breed values
