@@ -43,9 +43,14 @@ $(document).ready(function() {
     });
   });
 
-  function loadQuiz(){
-    console.log('loadQuiz');
+  var loadQuiz = function(){
+    console.log('load Quiz');
     $('#result').load('/questions.html #main');
+  };
+
+  var loadProfile = function(){
+    console.log('load Profile');
+    $('#result').load('/matches.html .matches');
   };
 
   var checkPreference = function( profile ){
@@ -70,14 +75,14 @@ $(document).ready(function() {
       console.log('results: ',results);
       if (results) {
         //if we have a profile, load matches.html
-        $('#result').load('/matches.html .matches');
+        loadProfile();
       }
       else {
         loadQuiz();
       }
     });
   };
-  //generate profile
+
   var generateProfile = function(){
     //generate Profile object with all values set to false
     var Profile = {
@@ -211,7 +216,7 @@ $(document).ready(function() {
     });
 
   };
-  //retrieve the profile:
+
   var retrieve_profile = function() {
     var id_token = localStorage.getItem('id_token');
     console.log('id_token is: ', id_token);
