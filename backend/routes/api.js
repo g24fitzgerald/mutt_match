@@ -30,4 +30,33 @@ router.post('/userpreference', function(req, res){
   });
 
 });
+
+router.post('/findmatch', function(req, res, next) {
+  if (req.body) {
+  var dogMatch = {  //find dogs with characteristics that match preference
+    active: eval(req.body.active),
+    lazy: eval(req.body.lazy),
+    hypoallergenic: eval(req.body.dog_allergy),
+    good_with_kids: eval(req.body.has_kids),
+    good_with_dogs: eval(req.body.has_dogs),
+    good_with_cats: eval(req.body.has_cats)
+  };
+
+
+    console.log(dogMatch);
+    Dog.find(dogMatch, '',
+     function(err, dog_matches) {
+       if (err) console.error("find function error: ", err);
+       console.log('finding matches');
+
+      res.json(dog_matches);
+     });
+    }
+    else {
+      console.log('else hit in findmatch');
+      res.send(false);
+    }
+  });
+
+
 module.exports = router;

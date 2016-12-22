@@ -167,7 +167,7 @@ $(document).ready(function() {
   };
   //show dogs function
   var showDogs = function(profile){
-    var id_token = localStorage.getItem('id_token');
+    var idToken = localStorage.getItem('id_token');
     //use profile here to find matching dogs
 
     var request = $.ajax({
@@ -176,16 +176,29 @@ $(document).ready(function() {
       method: 'POST',
       // need to send authorization header for security
       headers: {
-        'Authorization': 'Bearer ' + id_token
+        'Authorization': 'Bearer ' + idToken
       },
       data: profile
     });
     request.done(function(results){ //
-      console.log('results: ',results);
       if (results) {
-        console.log('results: ', results);
+        console.log('match results: ', results);
         //refer to reddit to format matches
+        for (var i = 0; i < results.length; i++){
+          var name = results[i].name;
+          var breed = results[i].breed;
 
+          var elements = [
+          '<li>',
+            '<div class="row">',
+              '<div class="col-md-1">',
+                '<h5>', name, '</h5>',
+              '</div>',
+            '</div>',
+          '</li>'
+        ].join('');
+        $('#matches-list').append(elements);
+        }
       }
       else {
         console.log('results did not exist')
