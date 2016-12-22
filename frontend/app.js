@@ -145,7 +145,7 @@ $(document).ready(function() {
 
     console.log('Final profile: ', Profile);
     var request = $.ajax({
-      url: 'http://localhost:3000/api/userpreference', //Do we need to make a new route?
+      url: 'http://localhost:3000/api/userpreference',
       method: 'POST',
       // need to send authorization header
       headers: {
@@ -165,7 +165,28 @@ $(document).ready(function() {
     });
   };
   //show dogs function
+  var showdogs = function(){
+    var id_token = localStorage.getItem('id_token');
+    var request = $.ajax({
+      url: 'http://localhost:3000/api/findmatch',
+      method: 'POST',
+      // need to send authorization header
+      headers: {
+        'Authorization': 'Bearer ' + idToken
+      },
+      data: Profile
+    });
+    request.done(function(results){ //
+      console.log('results: ',results);
+      if (results) {
+        console.log('results: ', results);
+      }
+      else {
+        console.log('results did not exist')
+      }
+    });
 
+  };
   //retrieve the profile:
   var retrieve_profile = function() {
     var id_token = localStorage.getItem('id_token');

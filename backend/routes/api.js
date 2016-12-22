@@ -3,7 +3,6 @@ var router = express.Router();
 
 var Preference = require('../models/user_preference');
 var Dog = require('../models/dog');
-var UserMatch = require('../models/user_dog_match');
 
 //get all playlists for a user
 router.get('/profile', function(req, res, next) {
