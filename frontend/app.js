@@ -61,7 +61,7 @@ $(document).ready(function() {
     console.log('new token: ', idToken);
 
     var request = $.ajax({
-      url: 'http://localhost:3000/checkprefs', //we shouldn't hardcode this
+      url: 'https://radiant-waters-50602.herokuapp.com/checkprefs', //we shouldn't hardcode this
       method: 'POST',
       //need to send authorization header
       headers: {
@@ -150,7 +150,7 @@ $(document).ready(function() {
 
     console.log('Final profile: ', Profile);
     var request = $.ajax({
-      url: 'http://localhost:3000/api/userpreference',
+      url: 'https://radiant-waters-50602.herokuapp.com/userpreference',
       method: 'POST',
       // need to send authorization header
       headers: {
@@ -178,7 +178,7 @@ $(document).ready(function() {
 
     var request = $.ajax({
       // $('#matches-list').empty(); //ensure contents of html are cleared
-      url: 'http://localhost:3000/api/findmatch',
+      url: 'https://radiant-waters-50602.herokuapp.com/findmatch',
       method: 'POST',
       // need to send authorization header for security
       headers: {
