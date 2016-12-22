@@ -1,13 +1,15 @@
 
 
-
-
-#matches-list li {
+#result .row {
   background-color: #DFD3B7;
-  border-radius: 10px;
 }
 
-.match-image {
+#matches-list li {
+  margin: 10px 0;
+
+}
+
+.match-image img {
   width:  50%;
   height: 50%;
   background-position: 50% 50%;
@@ -15,8 +17,14 @@
   background-size:     cover;
 }
 
+.match-info {
+  text-align: center;
+  vertical-align: middle;
+}
 .match-info h5 {
   font-family: 'Bitter', serif;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 40px;
+  display: inline;
+  margin-top: 30px;
 }

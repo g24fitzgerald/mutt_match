@@ -203,9 +203,12 @@ $(document).ready(function() {
                   '<img src=',image,'>',
                 '</a>',
               '</div>',
-              '<div class="col-md-8 match-info">',
+              '<div class="col-md-4 match-info">',
                 '<h5>', name, '</h5>',
+              '</div>',
+              '<div class="col-md-4 match-info">',
                 '<h5>', breed, '</h5>',
+              '</div>',
               '</div>',
             '</div>',
           '</li>'
