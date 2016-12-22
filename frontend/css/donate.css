@@ -91,6 +91,7 @@ nav img {
 	font-size: 20px;
 	padding-bottom: 30px;
 	margin: 0 120px;
+	font-style: italic;
 }
 
 .service-centers {
@@ -163,22 +164,24 @@ nav img {
 	font-size: 20px;
 	padding-bottom: 30px;
 	margin: 0 120px;
+	font-style: italic;
 }
 
 
 .payment {
-	color: #000;
-  font-family: 'Bitter-Bold', serif;
-  font-size: 20px;
 	padding-top: 10px;
 	padding-bottom: 20px;
 	text-align: center;
 }
 
-.payment h4, h3 {
-font-family: 'Lora', serif;
-font-size: 20px;
-font-style: italic;
+
+
+.payment input {
+	font-family: 'Bitter', serif;
+	margin: 5px 0;
+	border: 0;
+  outline: 0;
+  border-bottom: 2px solid #A03037;
 }
 
 .pay {
@@ -189,13 +192,6 @@ font-style: italic;
 	padding: 10px;
 	border: none;
 	font-family: 'Bitter', serif;
-}
-
-.payment input {
-	margin: 5px 0;
-	border: 0;
-  outline: 0;
-  border-bottom: 2px solid #A03037;
 }
 
 footer {
