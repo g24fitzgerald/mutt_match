@@ -171,6 +171,7 @@ $(document).ready(function() {
   };
   //show dogs function
   var showDogs = function(profile){
+    loadProfile();
     var idToken = localStorage.getItem('id_token');
     //use profile here to find matching dogs
 
@@ -185,7 +186,6 @@ $(document).ready(function() {
       data: profile
     });
     request.done(function(results){ //
-      loadProfile();
       if (results) {
         console.log('match results: ', results);
         //loop through matches to grab image name and breed values
