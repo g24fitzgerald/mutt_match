@@ -158,6 +158,7 @@ $(document).ready(function() {
       if (results) {
         console.log('results: ', results);
         //showdogs(results) function
+        showDogs(results);
       }
       else {
         console.log('results did not exist')
@@ -165,8 +166,10 @@ $(document).ready(function() {
     });
   };
   //show dogs function
-  var showdogs = function(){
+  var showDogs = function(profile){
     var id_token = localStorage.getItem('id_token');
+    //use profile here to find matching dogs
+
     var request = $.ajax({
       url: 'http://localhost:3000/api/findmatch',
       method: 'POST',
