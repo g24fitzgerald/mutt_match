@@ -1,0 +1,22 @@
+
+
+
+
+#matches-list li {
+  background-color: #DFD3B7;
+  border-radius: 10px;
+}
+
+.match-image {
+  width:  50%;
+  height: 50%;
+  background-position: 50% 50%;
+  background-repeat:   no-repeat;
+  background-size:     cover;
+}
+
+.match-info h5 {
+  font-family: 'Bitter', serif;
+  font-weight: bold;
+  font-size: 20px;
+}

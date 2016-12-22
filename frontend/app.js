@@ -198,14 +198,14 @@ $(document).ready(function() {
           var elements = [
           '<li>',
             '<div class="row">',
-              '<div class="col-md-3">',
+              '<div class="col-md-4 match-image">',
                 '<a href=#>',
                   '<img src=',image,'>',
                 '</a>',
               '</div>',
-              '<div class="col-md-1">',
+              '<div class="col-md-8 match-info">',
                 '<h5>', name, '</h5>',
-                '<p>', breed, '</p>',
+                '<h5>', breed, '</h5>',
               '</div>',
             '</div>',
           '</li>'
