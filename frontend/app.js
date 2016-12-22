@@ -69,14 +69,12 @@ $(document).ready(function() {
     request.done(function(results){
       console.log('results: ',results);
       if (results) {
-        //if we have a profile
+        //if we have a profile, load matches.html
+        $('#result').load('/matches.html .matches');
       }
       else {
         loadQuiz();
       }
-      // for (var i = 0, x = results.length; i<x; i++){
-      //   $('.main_ul').append('<li>' + results[i].size + '</li>');
-      // }
     });
   };
   //generate profile
@@ -183,16 +181,23 @@ $(document).ready(function() {
     request.done(function(results){ //
       if (results) {
         console.log('match results: ', results);
-        //refer to reddit to format matches
+        //loop through matches to grab image name and breed values
         for (var i = 0; i < results.length; i++){
+          var image = results[i].image;
           var name = results[i].name;
           var breed = results[i].breed;
-
+          //insert to display
           var elements = [
           '<li>',
             '<div class="row">',
+              '<div class="col-md-3">',
+                '<a href=#>',
+                  '<img src=',image,'>',
+                '</a>',
+              '</div>',
               '<div class="col-md-1">',
                 '<h5>', name, '</h5>',
+                '<p>', breed, '</p>',
               '</div>',
             '</div>',
           '</li>'
