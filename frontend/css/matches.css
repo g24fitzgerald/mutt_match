@@ -92,3 +92,7 @@ background-color: #DFD3B7;
 .adoption-list li {
   margin: 15px 0;
 }
+.adoption-list a {
+  text-decoration: none;
+  color: #000;
+}
