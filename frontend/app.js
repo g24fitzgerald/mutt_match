@@ -1,7 +1,7 @@
 $(document).ready(function() {
   var baseUrl;
   if (window.location.hostname === "localhost") {
-     baseUrl = "http://localhost:3000/api";
+     baseUrl = "http://localhost:3000/";
   } else { baseUrl =  "https://radiant-waters-50602.herokuapp.com"}
 
   var lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN, {
@@ -156,7 +156,7 @@ $(document).ready(function() {
 
     console.log('Final profile: ', Profile);
     var request = $.ajax({
-      url: baseUrl + '/userpreference',
+      url: baseUrl + 'api/userpreference',
       method: 'POST',
       // need to send authorization header
       headers: {
@@ -183,7 +183,7 @@ $(document).ready(function() {
     //use profile here to find matching dogs
 
     var request = $.ajax({
-      url: baseUrl + '/findmatch',
+      url: baseUrl + 'api/findmatch',
       method: 'POST',
       // need to send authorization header for security
       headers: {
